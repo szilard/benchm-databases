@@ -25,11 +25,11 @@ R/Python operate in memory and can integrate the basic tabular operations
 with reach visualization, statistical modeling etc. On the other hand, they are limited to data sizes
 that fit in RAM, run single-threaded, and unlike the other systems do not have a query optimizer.
 
-MySQL/Postgres have been designed for mixed OLTP/analytical workloads and any given query runs
+MySQL/Postgres have been designed for mixed OLTP/analytical workloads but any given query runs
 on one processor core only (though the database can use multiple cores to run different queries).
 
-The analytical databases and the "big data" systems can scale-out to multiple nodes. The analytical
-databases have shared-nothing architecture, columnar storage, compression and are specifically
+The analytical databases and the "big data" systems can scale-out to multiple nodes (and use all cores on them). 
+The analytical databases have shared-nothing architecture, columnar storage, compression and are specifically
 designed for large aggregations and joins.
 
 Hive/Spark are based on the map-reduce paradigm, SQL operations are translated to 
