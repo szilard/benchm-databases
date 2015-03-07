@@ -29,11 +29,11 @@ MySQL/Postgres have been designed for mixed OLTP/analytical workloads but any gi
 on one processor core only (though the database can use multiple cores to run different queries).
 
 The analytical databases and the "big data" systems can scale-out to multiple nodes (and use all cores on them). 
-The analytical databases have shared-nothing architecture, columnar storage, compression and are specifically
+The analytical (MPP) databases have shared-nothing architecture, columnar storage, compression and are specifically
 designed for large aggregations and joins.
 
 Hive/Spark are based on the map-reduce paradigm, SQL operations are translated to 
-map/shuffle/reduce tasks (Hive generates traditional Hadoop jobs, while Spark leverages in-memory
+map/shuffle/reduce primitives (Hive generates traditional Hadoop jobs, while Spark leverages in-memory
 architecture). Impala uses MPP-like technology to query data in HDFS (Hadoop's distributed file system).
 
 
