@@ -40,7 +40,7 @@ architecture). Impala uses MPP-like technology to query data in HDFS (Hadoop's d
 #### Data
 
 The data is randomly generated: one table `d` (`x` integer, `y` float) of 100 million rows for aggregation
-(`x` takes 1 million values) and another table `dm` (`x` integer) of 1 million rows for the join only.
+(`x` takes 1 million distinct values) and another table `dm` (`x` integer) of 1 million rows for the join only.
 (The larger table `d` is of 2.4 GB size.)
 
 
@@ -69,7 +69,7 @@ inner join dm on d.x = dm.x;
 
 All tests have been performed on a 8-core commodity server running Ubuntu 14.04 and 
 with plenty of RAM (64GB) for the tasks. All queries have been run 2 times and the second
-time was recorded (warm run). In this case various caching mechanism come into play and data is
+time was recorded (warm run). In this case various caching mechanisms come into play and data is
 already in RAM, therefore the disks used do not play a role.
 
 While I'm a great fan of reproducibility, in this benchmark I'm more interested in orders
