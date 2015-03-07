@@ -8,6 +8,7 @@ of time. This project aims at a *minimal* benchmark of various tools
 large size (but still within the reach of interactive data analysis that is with response times
 of a few seconds on commodity hardware).
 
+
 #### Tools
 
 The tools analysed are:
@@ -40,7 +41,7 @@ architecture). Impala uses MPP-like technology to query data in HDFS (Hadoop's d
 
 The data is randomly generated: one table of 100 million rows for aggregation
 (1 million groups) and another table of 1 million rows for the join with the first table.
-(The larger table is of GB size.)
+(The larger table is of 2.4 GB size.)
 
 
 #### Hardware/setup
@@ -72,7 +73,6 @@ scale-out systems. I'm primarily concerned with efficiency on a single (or small
 Also, one might say that queries in practice are complex and the running times depend not only 
 on how fast are these primitives, but also on how the query optimizer can deal with complexity. Again,
 a comprehensive SQL benchmark is out of the scope here.
-
 
 
 #### Measurements
