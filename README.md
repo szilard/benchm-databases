@@ -54,11 +54,40 @@ While I'm a great fan of reproducibility, in this benchmark I'm more interested 
 of magnitude and not strict precision. With some more work one can create install and test
 scripts and run them on a specific EC2 instance.
 
-The software tools have been installed using just standard instructions and no special tuning 
+The software tools have been installed using standard instructions and with no special tuning 
 (with a few exceptions as noted).
 
 
 #### Limitations
+
+This is far from a comprehensive benchmark. It is my attempt to *quickly* get an idea of the order
+of magnitude of runtime for aggregations and joins on datasets of sizes of interest to *me*. 
+
+The results are expected to vary with hardware, tuning and even more with dataset size, 
+dataset structure, or the number nodes for the scale-out systems etc. 
+
+I specifically want to avoid (at least for now) looking at scaling by number of nodes for the 
+scale-out systems. I'm primarily concerned with efficiency on a single (or small number of nodes).
+
+Also, one might say that queries in practice are complex and the running times depend not only 
+on how fast are these primitives, but also on how the query optimizer can deal with complexity. Again,
+a comprehensive SQL benchmark is out of the scope here.
+
+
+
+#### Experiments
+
+The following runtimes have been measured:
+
+1. For R/Python data has been read from csv file and then aggregates/joins happen in memory.
+2. For MySQL/Postgres and the analytical databases, the data has to be loaded first into the database, and only then 
+can one run queries.
+3. For the Hadoop-based systems the data has to be copied into HDFS (much-much faster than loading it to a database)
+or optionally it can be tranformed into a columnar format (such as parquet). Queries can run readily.
+
+
+
+#### Results
 
 
 
