@@ -17,14 +17,14 @@ The tools analysed are:
 3. Analytical databases (3 MPP/columnar stores)
 4. Big data systems (Hive, Impala, Spark)
 
-All but the analytical databases are open source. The analytical database have free (community) editions
+All but the analytical databases are open source. The analytical databases have free (community) editions
 or unexpensive cloud offerings. 
 
 R/Python operate in memory and can integrate the basic tabular operations
 with reach visualization, statistical modeling etc. On the other hand, they are limited to data sizes
 that fit in RAM, run single-threaded, and unlike the other systems do not have a query optimizer.
 
-MySQL/Postgres have been designed for mixed OLTP/analytical loads and any given query runs
+MySQL/Postgres have been designed for mixed OLTP/analytical workloads and any given query runs
 on one processor core only (though the database can use multiple cores to run different queries).
 
 The analytical databases and the "big data" systems can scale-out to multiple nodes. The analytical
@@ -51,10 +51,10 @@ time was recorded (warm run). In this case various caching mechanism come into p
 already in RAM, therefore the disks used do not play a role.
 
 While I'm a great fan of reproducibility, in this benchmark I'm more interested in orders
-of magnitude and not strict precision. With some more work one can create install and test
+of magnitude and not strict precision and exact reproducibility. With some more work one can create install and test
 scripts and run them on a specific EC2 instance.
 
-The software tools have been installed using standard instructions and with no special tuning 
+The software tools have been installed using standard instructions and with no tuning 
 (with a few exceptions as noted).
 
 
@@ -83,7 +83,7 @@ The following runtimes have been measured:
 2. For MySQL/Postgres and the analytical databases, the data has to be loaded first into the database, and only then 
 can one run queries.
 3. For the Hadoop-based systems the data has to be copied into HDFS (much-much faster than loading it to a database)
-or optionally it can be tranformed into a columnar format (such as parquet). Queries can run readily.
+or optionally it can be transformed into a columnar format (such as parquet). Queries can run readily.
 
 
 
