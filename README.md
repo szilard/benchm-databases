@@ -80,13 +80,22 @@ scripts and run them on a specific EC2 instance.
 The software tools have been installed using standard instructions with no tuning 
 (with a few exceptions as noted).
 
+The following runinng times have been measured:
+
+1. For R/Python data has been read from csv file and then aggregates/joins happen in memory.
+2. For MySQL/Postgres and the analytical databases, the data has to be loaded first into the database, and only then 
+can one run queries.
+3. For the Hadoop-based systems the data has to be copied into HDFS (much-much faster than loading it to a database)
+or optionally it can be transformed into a columnar format (such as parquet). Queries can run readily.
+
+
 
 #### Limitations
 
 This is far from a comprehensive benchmark. It is my attempt to *quickly* get an idea of the order
-of magnitude of runtime for aggregations and joins on datasets of sizes of interest to *me*. 
+of magnitude of runtime for aggregations and joins on datasets of sizes of interest to *me* at the moment. 
 
-The results are expected to vary with hardware, tuning and even more with dataset size, 
+The results are expected to vary with hardware, tuning, and even more with dataset size, 
 dataset structure, or the number nodes for the scale-out systems etc. (Perhaps the strongest
 critique against the relevance of this benchmark would say why this specific dataset? Why not
 vary the size/structure?)
@@ -97,17 +106,6 @@ scale-out systems. I'm primarily concerned with efficiency on a single (or a sma
 Finally, one might say that queries in practice are complex and the running times depend not only 
 on how fast are these primitives, but also on how the query optimizer can deal with complexity. Again,
 a comprehensive SQL benchmark is out of the scope here.
-
-
-#### Measurements
-
-The following runtimes have been measured:
-
-1. For R/Python data has been read from csv file and then aggregates/joins happen in memory.
-2. For MySQL/Postgres and the analytical databases, the data has to be loaded first into the database, and only then 
-can one run queries.
-3. For the Hadoop-based systems the data has to be copied into HDFS (much-much faster than loading it to a database)
-or optionally it can be transformed into a columnar format (such as parquet). Queries can run readily.
 
 
 
