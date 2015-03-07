@@ -88,12 +88,13 @@ of magnitude of runtime for aggregations and joins on datasets of sizes of inter
 
 The results are expected to vary with hardware, tuning and even more with dataset size, 
 dataset structure, or the number nodes for the scale-out systems etc. (Perhaps the strongest
-critique against the relevance of this benchmark would say why this specific dataset?)
+critique against the relevance of this benchmark would say why this specific dataset? Why not
+vary the size/structure?)
 
-I specifically want to avoid (at least for now) looking at scaling by number of nodes for the 
+I also specifically want to avoid (at least for now) looking at scaling by number of nodes for the 
 scale-out systems. I'm primarily concerned with efficiency on a single (or a small number of nodes).
 
-Also, one might say that queries in practice are complex and the running times depend not only 
+Finally, one might say that queries in practice are complex and the running times depend not only 
 on how fast are these primitives, but also on how the query optimizer can deal with complexity. Again,
 a comprehensive SQL benchmark is out of the scope here.
 
