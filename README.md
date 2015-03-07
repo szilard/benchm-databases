@@ -87,10 +87,11 @@ This is far from a comprehensive benchmark. It is my attempt to *quickly* get an
 of magnitude of runtime for aggregations and joins on datasets of sizes of interest to *me*. 
 
 The results are expected to vary with hardware, tuning and even more with dataset size, 
-dataset structure, or the number nodes for the scale-out systems etc. 
+dataset structure, or the number nodes for the scale-out systems etc. (Perhaps the strongest
+critique against the relevance of this benchmark would say why this specific dataset?)
 
 I specifically want to avoid (at least for now) looking at scaling by number of nodes for the 
-scale-out systems. I'm primarily concerned with efficiency on a single (or small number of nodes).
+scale-out systems. I'm primarily concerned with efficiency on a single (or a small number of nodes).
 
 Also, one might say that queries in practice are complex and the running times depend not only 
 on how fast are these primitives, but also on how the query optimizer can deal with complexity. Again,
