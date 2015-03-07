@@ -71,13 +71,13 @@ inner join dm on d.x = dm.x;
 All tests have been performed on a 8-core commodity server running Ubuntu 14.04 and 
 with plenty of RAM (64GB) for the tasks. All queries have been run 2 times and the second
 time was recorded (warm run). In this case various caching mechanisms come into play and data is
-already in RAM, therefore the disks used do not play a role.
+already in RAM, therefore the disks do not play a role.
 
 While I'm a great fan of reproducibility, in this benchmark I'm more interested in orders
 of magnitude and not strict precision and exact reproducibility. With some more work one can create install and test
 scripts and run them on a specific EC2 instance.
 
-The software tools have been installed using standard instructions and with no tuning 
+The software tools have been installed using standard instructions with no tuning 
 (with a few exceptions as noted).
 
 
