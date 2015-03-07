@@ -43,7 +43,7 @@ The data is randomly generated: one table of 100 million rows for aggregation
 (The larger table is of GB size.)
 
 
-#### Hardware
+#### Hardware/setup
 
 All tests have been performed on a 8-core commodity server running Ubuntu 14.04 and 
 with plenty of RAM (64GB) for the tasks. All queries have been run 2 times and the second
@@ -75,7 +75,7 @@ a comprehensive SQL benchmark is out of the scope here.
 
 
 
-#### Experiments
+#### Measurements
 
 The following runtimes have been measured:
 
