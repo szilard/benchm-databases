@@ -39,9 +39,30 @@ architecture). Impala uses MPP-like technology to query data in HDFS (Hadoop's d
 
 #### Data
 
-The data is randomly generated: one table of 100 million rows for aggregation
-(1 million groups) and another table of 1 million rows for the join with the first table.
-(The larger table is of 2.4 GB size.)
+The data is randomly generated: one table `d` (`x` integer, `y` float) of 100 million rows for aggregation
+(`x` 1 million values) and another table `dm` (`x` integer) of 1 million rows for the join only.
+(The larger table `d` is of 2.4 GB size.)
+
+
+#### Transformations
+
+SQL query for aggregate:
+
+```
+select x, avg(y) as ym 
+from d 
+group by x
+order by ym desc 
+limit 5;
+```
+
+and for join:
+
+```
+select count(*) as cnt 
+from d
+inner join dm on d.x = dm.x;
+```
 
 
 #### Hardware/setup
