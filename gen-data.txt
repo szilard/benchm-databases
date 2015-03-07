@@ -1,0 +1,18 @@
+
+time R --vanilla --quiet << EOF
+set.seed(123)
+n <- 100e6
+m <- 1e6
+d <- data.frame(x = sample(m, n, replace=TRUE), y = runif(n))
+dm <- data.frame(x = sample(m))
+write.table(d, file = "/tmp/d.csv", row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(dm, file = "/tmp/dm.csv", row.names = FALSE, col.names = FALSE, sep = ",")
+EOF
+## 3m52.052s
+
+
+du -h /tmp/d*csv
+## 2.4G    /tmp/d.csv
+## 6.6M    /tmp/dm.csv
+
+
