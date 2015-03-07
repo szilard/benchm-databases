@@ -66,7 +66,7 @@ inner join dm on d.x = dm.x;
 ```
 
 
-#### Hardware/setup
+#### Setup
 
 All tests have been performed on a 8-core commodity server running Ubuntu 14.04 and 
 with plenty of RAM (64GB) for the tasks. All queries have been run 2 times and the second
