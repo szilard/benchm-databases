@@ -114,13 +114,13 @@ a comprehensive SQL benchmark is out of the scope here.
 
 (runtimes in seconds)
 
-| system           |  load/read    |   aggregation  |   join   |
-| ---------------- | ------------- | -------------- | -------- |
-| R data.table     |   30          |       20       |    15    |
-| R data.table key |   45          |       2        |     3    |
-| MySQL MyISAM     |   50          |       70       |    600   |  
-| MySQL InnoDB     |   1500        |       100      |    200   |
-| Analytical DB-1  |   100         |       1        |     2    |
-| Analytical DB-2  |   150         |       10       |     25   |
+| type | system           |  load/read    |   aggregation  |   join   |
+| ---- | ---------------- | ------------- | -------------- | -------- |
+|  1   | R data.table     |   30          |       20       |    15    |
+|  1   | R data.table key |   45          |       2        |     3    |
+|  2   | MySQL MyISAM     |   50          |       70       |    600   |  
+|  2   | MySQL InnoDB     |   1500        |       100      |    200   |
+|  3   | Analytical DB-1  |   100         |       1        |     2    |
+|  3   | Analytical DB-2  |   150         |       10       |     25   |
 
 
