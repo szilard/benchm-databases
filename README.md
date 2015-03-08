@@ -120,7 +120,7 @@ a comprehensive SQL benchmark is out of the scope here.
 | R data.table key |   45          |       2        |     3    |
 | MySQL MyISAM     |   50          |       70       |    600   |  
 | MySQL InnoDB     |   1500        |       100      |    200   |
-| An.DB-1          |   100         |       1        |     2    |
-| An.DB-2          |   150         |       10       |     25   |
+| Analytical DB-1  |   100         |       1        |     2    |
+| Analytical DB-2  |   150         |       10       |     25   |
 
 
