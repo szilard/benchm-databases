@@ -14,7 +14,7 @@ of a few seconds on commodity hardware).
 The tools analysed are:
 
 1. Statistical software: R (dplyr, data.table) and Python (pandas)
-2. Databases (MySQL, Postgres)
+2. Databases (MySQL, PostgreSQL)
 3. Analytical databases (3 MPP/columnar stores)
 4. Big data systems (Hive, Impala, Spark)
 
@@ -123,6 +123,7 @@ a comprehensive SQL benchmark is out of the scope here.
 |  1   | R data.table key |   45          |       2        |     3    |
 |  2   | MySQL MyISAM     |   50          |       70       |    600   |  
 |  2   | MySQL InnoDB     |   1500        |       100      |    200   |
+|  2   | PostgreSQL       |   120         |       350      |     80   |
 |  3   | Analytical DB-1  |   100         |       1        |     2    |
 |  3   | Analytical DB-2  |   150         |       10       |     25   |
 
