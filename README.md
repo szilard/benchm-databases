@@ -21,15 +21,15 @@ The tools analysed are:
 All but the analytical databases are open source. The analytical databases have free (community) editions
 or unexpensive cloud offerings. 
 
-R/Python operate in memory and can integrate the basic tabular operations
-with reach visualization, statistical modeling etc. On the other hand, they are limited to data sizes
+R/Python operate in memory and can integrate the tabular operations
+with rich visualization, statistical modeling etc. On the other hand, they are limited to data sizes
 that fit in RAM, run single-threaded, and unlike the other systems do not have a query optimizer.
 
 MySQL/Postgres have been designed for mixed OLTP/analytical workloads but any given query runs
 on one processor core only (though the database can use multiple cores to run different queries).
 
 The analytical databases and the "big data" systems can scale-out to multiple nodes (and use all cores on them). 
-The analytical (MPP) databases have shared-nothing architecture, columnar storage, compression and are specifically
+The analytical (MPP) databases have parallel/shared-nothing architecture, columnar storage, compression and are specifically
 designed for large aggregations and joins.
 
 Hive/Spark are based on the map-reduce paradigm, SQL operations are translated to 
@@ -68,7 +68,7 @@ inner join dm on d.x = dm.x;
 
 #### Setup
 
-All tests have been performed on a 8-core commodity server running Ubuntu 14.04 and 
+All tests have been performed on a 8-core box running Ubuntu 14.04 and 
 with plenty of RAM (64GB) for the tasks. All queries have been run 2 times and the second
 time was recorded (warm run). In this case various caching mechanisms come into play and data is
 already in RAM, therefore the disks do not play a role.
