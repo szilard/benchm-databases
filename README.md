@@ -112,7 +112,7 @@ a comprehensive SQL benchmark is out of the scope here.
 
 #### Results
 
-(runtimes in seconds)
+(times in seconds)
 
 | type | system           |  load/read    |   aggregation  |   join   |
 | ---- | ---------------- | ------------- | -------------- | -------- |
