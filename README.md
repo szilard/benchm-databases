@@ -1,5 +1,5 @@
 
-### Simple/basic/limited/incomplete benchmark for operations on tabular data
+### Simple/basic/limited/incomplete benchmark for operations on tabular data (aggregates and joins)
 
 For structured/tabular/relational data most transformations for data analysis are based on a few
 primitives. Computationally, aggregates and joins are taking the majority
