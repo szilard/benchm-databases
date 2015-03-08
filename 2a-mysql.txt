@@ -1,0 +1,59 @@
+
+sudo apt-get install mysql-server
+
+/etc/mysql/my.cnf:
+tmp_table_size          = 128M     ## implicit default 16M
+max_heap_table_size     = 128M     ## implicit default 16M
+innodb_buffer_pool_size = 16G      ## implicit default 128M
+
+service mysql restart
+
+
+mysql -u root --local-infile
+
+create database benchm;
+use benchm
+
+create table d(x int, y float) engine = MyISAM;
+create table dm(x int) engine = MyISAM;
+
+load data local infile '/tmp/dm.csv' into table dm fields terminated by ',';
+load data local infile '/tmp/d.csv' into table d fields terminated by ',';
+
+create index ixm on dm(x);
+
+
+select x, avg(y) as ym 
+from d 
+group by x
+order by ym desc 
+limit 5;
+
+select count(*) as cnt 
+from d
+inner join dm on d.x = dm.x;
+
+
+drop table d;
+drop table dm;
+create table d(x int, y float);
+create table dm(x int);
+
+load data local infile '/tmp/dm.csv' into table dm fields terminated by ',';
+load data local infile '/tmp/d.csv' into table d fields terminated by ',';
+
+create index ixm on dm(x);
+
+
+select x, avg(y) as ym 
+from d 
+group by x
+order by ym desc 
+limit 5;
+
+select count(*) as cnt 
+from d
+inner join dm on d.x = dm.x;
+
+
+
