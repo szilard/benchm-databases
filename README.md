@@ -1,8 +1,8 @@
 
 ### Simple/basic/limited/incomplete benchmark for operations on tabular data
 
-For structured/tabular/relational data most transformations for data analysis are based on a [few
-primitives](https://github.com/hadley/dplyr). Computationally, aggregates and joins are taking the majority
+For structured/tabular/relational data most transformations for data analysis are based on a few
+primitives. Computationally, aggregates and joins are taking the majority
 of time. This project aims at a *minimal* benchmark of various tools 
 (statistical software, databases etc.) for working with tabular data of moderately
 large sizes (but still within the reach of interactive data analysis - response times
