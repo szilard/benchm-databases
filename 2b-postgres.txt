@@ -1,0 +1,29 @@
+
+
+apt-get install postgresql-9.3
+
+sudo -u postgres psql
+
+\timing
+
+create table d(x int, y float);
+create table dm(x int);
+
+copy dm from '/tmp/dm.csv' delimiter ',';
+copy d from '/tmp/d.csv' delimiter ',';
+
+create index ixm on dm(x);
+
+
+select x, avg(y) as ym 
+from d 
+group by x
+order by ym desc 
+limit 5;
+
+select count(*) as cnt 
+from d
+inner join dm on d.x = dm.x;
+
+
+
