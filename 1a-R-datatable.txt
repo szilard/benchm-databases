@@ -1,0 +1,36 @@
+
+
+library(data.table)
+
+d <- fread("/tmp/d.csv")
+dm <- fread("/tmp/dm.csv")
+setnames(d, c("x","y"))
+setnames(dm, "x")
+
+tables()
+##      NAME        NROW NCOL    MB COLS KEY
+## [1,] d    100,000,000    2 1,145 x,y     
+## [2,] dm     1,000,000    1     4 x       
+## Total: 1,149MB
+
+
+system.time(
+  print(head(d[, list(ym=mean(y)), by=x][order(-ym)],5))
+)
+
+
+system.time(
+  setkey(d, x)
+)
+
+system.time(
+  print(nrow(d[dm, nomatch=0]))
+)
+
+
+system.time(
+  print(head(d[, list(ym=mean(y)), by=x][order(-ym)],5))
+)
+
+
+
