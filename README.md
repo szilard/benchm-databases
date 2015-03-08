@@ -42,7 +42,7 @@ architecture). Impala uses MPP-like technology to query data in HDFS (Hadoop's d
 The data is [randomly generated](https://github.com/szilard/benchm-databases/blob/master/gen-data.txt): 
 one table `d` (`x` integer, `y` float) of 100 million rows for aggregation
 (`x` takes 1 million distinct values) and another table `dm` (`x` integer) of 1 million rows for the join only.
-(The larger table `d` is of 2.4 GB size.)
+(The larger table `d` is of 2.4 GB size in the CSV format.)
 
 
 #### Transformations
