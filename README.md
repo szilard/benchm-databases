@@ -104,6 +104,9 @@ vary the size/structure?)
 I also specifically want to avoid (at least for now) looking at scaling by number of nodes for the 
 scale-out systems. I'm primarily concerned with efficiency on a single (or a small number of nodes).
 
+In the tests the only computation running on the system is the target query, therefore I'm not
+studying the behavior in function of the load (e.g. the number of concurrent queries running on the system).
+
 Finally, one might say that queries in practice are complex and the running times depend not only 
 on how fast are these primitives, but also on how the query optimizer can deal with complexity. Again,
 a comprehensive SQL benchmark is out of the scope here.
@@ -122,5 +125,11 @@ a comprehensive SQL benchmark is out of the scope here.
 |  2   | MySQL InnoDB     |   1500        |       100      |    200   |
 |  3   | Analytical DB-1  |   100         |       1        |     2    |
 |  3   | Analytical DB-2  |   150         |       10       |     25   |
+
+
+#### Discussions
+
+
+
 
 
