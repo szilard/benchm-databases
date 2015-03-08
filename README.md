@@ -71,29 +71,29 @@ inner join dm on d.x = dm.x;
 All tests have been performed on a 8-core box running Ubuntu 14.04 and 
 with plenty of RAM (64GB) for the tasks. All queries have been run 2 times and the second
 time was recorded (warm run). In this case various caching mechanisms come into play and data is
-already in RAM, therefore the disks do not play a role.
+already in RAM, therefore the disks (standard or SSD) do not play a role.
 
 While I'm a great fan of reproducibility, in this benchmark I'm more interested in orders
 of magnitude and not strict precision and exact reproducibility. With some more work one can create install and test
-scripts and run them on a specific EC2 instance.
+scripts and run them on a specific EC2 instance for complete reproducibility.
 
 The software tools have been installed using standard instructions with no tuning 
 (with a few exceptions as noted).
 
-The following runinng times have been measured:
+The following running times have been measured:
 
 1. For R/Python data has been read from csv file and then aggregates/joins happen in memory.
 2. For MySQL/Postgres and the analytical databases, the data has to be loaded first into the database, and only then 
 can one run queries.
-3. For the Hadoop-based systems the data has to be copied into HDFS (much-much faster than loading it to a database)
-or optionally it can be transformed into a columnar format (such as parquet). Queries can run readily.
+3. For the Hadoop-based systems the data has to be copied into HDFS (much faster than loading it to a database); 
+optionally it can be transformed into a columnar format (such as parquet). Queries can run readily.
 
 
 
 #### Limitations
 
 This is far from a comprehensive benchmark. It is my attempt to *quickly* get an idea of the order
-of magnitude of runtime for aggregations and joins on datasets of sizes of interest to *me* at the moment. 
+of magnitude of running times for aggregations and joins on datasets of sizes of interest to *me* at the moment. 
 
 The results are expected to vary with hardware, tuning, and even more with dataset size, 
 dataset structure, or the number nodes for the scale-out systems etc. (Perhaps the strongest
