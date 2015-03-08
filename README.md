@@ -112,6 +112,15 @@ a comprehensive SQL benchmark is out of the scope here.
 
 #### Results
 
+(runtimes in seconds)
 
+| system           |  load/read    |   aggregation  |   join   |
+| ---------------- | ------------- | -------------- | -------- |
+| data.table       |   30          |       20       |    15    |
+| data.table key   |   45          |       2        |     3    |
+| MySQL MyISAM     |   50          |       70       |    600   |  
+| MySQL InnoDB     |   1500        |       100      |    200   |
+| coldb-1          |   100         |       1        |     2    |
+| coldb-2          |   150         |       10       |     25   |
 
 
