@@ -121,7 +121,7 @@ a comprehensive SQL benchmark is out of the scope here.
 | ---- | ---------------- | ------------- | -------------- | -------- |
 |  1   | R data.table     |   30          |       20       |    15    |
 |  1   | R data.table key |   45          |       2        |    3     |
-|  1   | R dplyrm         |   30          |       70       |    60    |
+|  1   | R dplyr          |   30          |       70       |    60    |
 |  1   | Python pandas    |   40          |       20       |    50    |
 |  2   | MySQL MyISAM     |   50          |       70       |    600   |  
 |  2   | MySQL InnoDB     |   1500        |       100      |    200   |

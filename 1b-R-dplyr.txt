@@ -1,0 +1,19 @@
+
+library(data.table)
+library(dplyr)
+
+d <- tbl_df(as.data.frame(fread("/tmp/d.csv")))
+dm <- tbl_df(as.data.frame(fread("/tmp/dm.csv")))
+names(d) <- c("x","y")
+names(dm) <- "x"
+
+
+system.time(
+  print(d %>% group_by(x) %>% summarize(ym = mean(y)) %>% arrange(desc(ym)) %>% head(5))
+)
+
+system.time(
+  print(d %>% inner_join(dm, by="x") %>% summarize(n = n()))
+)
+
+

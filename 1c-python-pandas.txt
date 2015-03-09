@@ -1,0 +1,18 @@
+
+ipython
+
+
+import pandas as pd
+
+%time d = pd.read_csv("/tmp/d.csv", header = None, names=["x","y"])
+%time dm = pd.read_csv("/tmp/dm.csv", header = None, names=["x"])
+
+
+%time d.groupby("x", as_index = False)["y"].mean().sort("y", ascending = False).head(5)
+##%time d.groupby("x")["y"].mean()
+
+%time pd.merge(d, dm).shape[0]
+
+
+
+
