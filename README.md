@@ -120,12 +120,14 @@ a comprehensive SQL benchmark is out of the scope here.
 | type | system           |  load/read    |   aggregation  |   join   |
 | ---- | ---------------- | ------------- | -------------- | -------- |
 |  1   | R data.table     |   30          |       20       |    15    |
-|  1   | R data.table key |   45          |       2        |     3    |
+|  1   | R data.table key |   45          |       2        |    3     |
+|  1   | R dplyrm         |   30          |       70       |    60    |
+|  1   | Python pandas    |   40          |       20       |    50    |
 |  2   | MySQL MyISAM     |   50          |       70       |    600   |  
 |  2   | MySQL InnoDB     |   1500        |       100      |    200   |
-|  2   | PostgreSQL       |   120         |       350      |     80   |
-|  3   | Analytical DB-1  |   100         |       1        |     2    |
-|  3   | Analytical DB-2  |   150         |       10       |     25   |
+|  2   | PostgreSQL       |   120         |       350      |    80    |
+|  3   | Analytical DB-1  |   100         |       1        |    2     |
+|  3   | Analytical DB-2  |   150         |       10       |    25    |
 
 
 #### Discussions
