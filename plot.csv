@@ -1,0 +1,10 @@
+type|system|aggregation|join
+stats|R data.table|20|15
+stats|R data.table key|2|3
+stats|R dplyr|70|60
+stats|Python pandas|20|50
+db|MySQL MyISAM|70|600
+db|MySQL InnoDB|100|200
+db|PostgreSQL|350|80
+an.db|Analytical DB-1|1|2
+an.db|Analytical DB-2|10|25
