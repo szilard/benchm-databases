@@ -129,6 +129,7 @@ a comprehensive SQL benchmark is out of the scope here.
 |  an.db   | Analytical DB-1  |   100         |       1        |    2     |
 |  an.db   | Analytical DB-2  |   150         |       10       |    25    |
 
+![plots](https://github.com/szilard/benchm-databases/blob/master/plot.png)
 
 #### Discussions
 
