@@ -9,7 +9,7 @@ import pandas as pd
 
 
 %time d.groupby("x", as_index = False)["y"].mean().sort("y", ascending = False).head(5)
-##%time d.groupby("x")["y"].mean()
+%time d.groupby("x")["y"].mean().order(ascending = False)[:5]
 
 %time pd.merge(d, dm).shape[0]
 
