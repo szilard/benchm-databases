@@ -25,7 +25,7 @@ R/Python operate in memory and can integrate the tabular operations
 with rich visualization, statistical modeling etc. On the other hand, they are limited to data sizes
 that fit in RAM, run single-threaded, and unlike the other systems do not have a query optimizer.
 
-MySQL/Postgres have been designed for mixed OLTP/analytical workloads but any given query runs
+MySQL/PostgreSQL have been designed for mixed OLTP/analytical workloads but any given query runs
 on one processor core only (though the database can use multiple cores to run different queries).
 
 The analytical databases and the "big data" systems can scale-out to multiple nodes (and use all cores on them). 
@@ -117,18 +117,19 @@ a comprehensive SQL benchmark is out of the scope here.
 
 (times in seconds)
 
-| type     | system           |  load/read    |   aggregation  |   join   |
-| -------- | ---------------- | ------------- | -------------- | -------- |
-|  stats   | R data.table     |   30          |       20       |    15    |
-|  stats   | R data.table key |   45          |       2        |    3     |
-|  stats   | R dplyr          |   30          |       70       |    60    |
-|  stats   | Python pandas    |   40          |       20       |    50    |
-|  db      | MySQL MyISAM     |   50          |       70       |    600   |  
-|  db      | MySQL InnoDB     |   1500        |       100      |    200   |
-|  db      | PostgreSQL       |   120         |       350      |    80    |
-|  an.db   | Analytical DB-1  |   100         |       1        |    2     |
-|  an.db   | Analytical DB-2  |   150         |       10       |    25    |
-|  hadoop  | Impala           |   20          |       60       |    50    |
+|  Type      | System           |  Load/Rea     |   Aggregation  |   Join   |
+| ---------- | ---------------- | ------------- | -------------- | -------- |
+|  Stats     | R data.table     |   30          |       20       |    15    |
+|  Stats     | R data.table key |   45          |       2        |    3     |
+|  Stats     | R dplyr          |   30          |       70       |    60    |
+|  Stats     | Python pandas    |   40          |       20       |    50    |
+|  DB        | MySQL MyISAM     |   50          |       70       |    600   |  
+|  DB        | MySQL InnoDB     |   1500        |       100      |    200   |
+|  DB        | PostgreSQL       |   120         |       350      |    80    |
+|  MPP       | Analytical DB-1  |   100         |       1        |    2     |
+|  MPP       | Analytical DB-2  |   150         |       10       |    25    |
+|  Big Data  | Hive             |   20          |       1000     |    160   |
+|  Big Data  | Impala           |   20          |       60       |    50    |
 
 ![plots](https://github.com/szilard/benchm-databases/blob/master/plot.png)
 
