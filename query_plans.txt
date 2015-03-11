@@ -1,0 +1,75 @@
+
+
+##### MySQL MyISAM
+
+
+mysql> explain extended select x, avg(y) as ym  from d  group by x order by ym desc  limit 5;
++----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows      | filtered | Extra                           |
++----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
+|  1 | SIMPLE      | d     | ALL  | NULL          | NULL | NULL    | NULL | 100000000 |   100.00 | Using temporary; Using filesort |
++----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql>  explain extended select count(*) as cnt  from d inner join dm on d.x = dm.x;
++----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref        | rows      | filtered | Extra                    |
++----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
+|  1 | SIMPLE      | d     | ALL  | NULL          | NULL | NULL    | NULL       | 100000000 |   100.00 |                          |
+|  1 | SIMPLE      | dm    | ref  | ixm           | ixm  | 5       | benchm.d.x |         1 |   100.00 | Using where; Using index |
++----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
+
+
+
+
+
+##### MySQL InnoDB
+
+
+mysql> explain extended select x, avg(y) as ym  from d  group by x order by ym desc  limit 5;
++----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows      | filtered | Extra                           |
++----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
+|  1 | SIMPLE      | d     | ALL  | NULL          | NULL | NULL    | NULL | 100000319 |   100.00 | Using temporary; Using filesort |
++----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
+1 row in set, 1 warning (0.01 sec)
+
+mysql> explain extended select count(*) as cnt  from d inner join dm on d.x = dm.x;
++----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref        | rows      | filtered | Extra                    |
++----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
+|  1 | SIMPLE      | d     | ALL  | NULL          | NULL | NULL    | NULL       | 100000319 |   100.00 |                          |
+|  1 | SIMPLE      | dm    | ref  | ixm           | ixm  | 5       | benchm.d.x |         1 |   100.00 | Using where; Using index |
++----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
+2 rows in set, 1 warning (0.00 sec)
+
+
+
+
+###### postgres
+
+
+postgres=# explain select x, avg(y) as ym  from d  group by x order by ym desc  limit 5;
+                                      QUERY PLAN                                       
+---------------------------------------------------------------------------------------
+ Limit  (cost=24151458.52..24151458.53 rows=5 width=12)
+   ->  Sort  (cost=24151458.52..24153916.54 rows=983208 width=12)
+         Sort Key: (avg(y))
+         ->  GroupAggregate  (cost=23372848.55..24135127.79 rows=983208 width=12)
+               ->  Sort  (cost=23372848.55..23622844.93 rows=99998552 width=12)
+                     Sort Key: x
+                     ->  Seq Scan on d  (cost=0.00..1540526.52 rows=99998552 width=12)
+(7 rows)
+
+
+postgres=# explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
+                                  QUERY PLAN                                  
+------------------------------------------------------------------------------
+ Aggregate  (cost=4356476.56..4356476.57 rows=1 width=0)
+   ->  Hash Join  (cost=30832.00..4106480.18 rows=99998552 width=0)
+         Hash Cond: (d.x = dm.x)
+         ->  Seq Scan on d  (cost=0.00..1540526.52 rows=99998552 width=4)
+         ->  Hash  (cost=14425.00..14425.00 rows=1000000 width=4)
+               ->  Seq Scan on dm  (cost=0.00..14425.00 rows=1000000 width=4)
+(6 rows)
+
