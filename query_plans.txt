@@ -11,6 +11,7 @@ mysql> explain extended select x, avg(y) as ym  from d  group by x order by ym d
 +----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
 1 row in set, 1 warning (0.00 sec)
 
+
 mysql>  explain extended select count(*) as cnt  from d inner join dm on d.x = dm.x;
 +----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
 | id | select_type | table | type | possible_keys | key  | key_len | ref        | rows      | filtered | Extra                    |
@@ -34,6 +35,7 @@ mysql> explain extended select x, avg(y) as ym  from d  group by x order by ym d
 +----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
 1 row in set, 1 warning (0.01 sec)
 
+
 mysql> explain extended select count(*) as cnt  from d inner join dm on d.x = dm.x;
 +----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
 | id | select_type | table | type | possible_keys | key  | key_len | ref        | rows      | filtered | Extra                    |
@@ -46,7 +48,7 @@ mysql> explain extended select count(*) as cnt  from d inner join dm on d.x = dm
 
 
 
-###### postgres
+###### PostgreSQL
 
 
 postgres=# explain select x, avg(y) as ym  from d  group by x order by ym desc  limit 5;
@@ -72,4 +74,76 @@ postgres=# explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
          ->  Hash  (cost=14425.00..14425.00 rows=1000000 width=4)
                ->  Seq Scan on dm  (cost=0.00..14425.00 rows=1000000 width=4)
 (6 rows)
+
+
+
+
+
+###### Impala
+
+[localhost:21000] > explain select x, avg(y) as ym  from d  group by x order by ym desc  limit 5;
+Query: explain select x, avg(y) as ym  from d  group by x order by ym desc  limit 5
++------------------------------------------------------------------------------------+
+| Explain String                                                                     |
++------------------------------------------------------------------------------------+
+| Estimated Per-Host Requirements: Memory=2.00GB VCores=2                            |
+| WARNING: The following tables are missing relevant table and/or column statistics. |
+| benchm.d                                                                           |
+|                                                                                    |
+| 05:MERGING-EXCHANGE [UNPARTITIONED]                                                |
+| |  order by: avg(y) DESC                                                           |
+| |  limit: 5                                                                        |
+| |                                                                                  |
+| 02:TOP-N [LIMIT=5]                                                                 |
+| |  order by: avg(y) DESC                                                           |
+| |                                                                                  |
+| 04:AGGREGATE [FINALIZE]                                                            |
+| |  output: avg:merge(y)                                                            |
+| |  group by: x                                                                     |
+| |                                                                                  |
+| 03:EXCHANGE [HASH(x)]                                                              |
+| |                                                                                  |
+| 01:AGGREGATE                                                                       |
+| |  output: avg(y)                                                                  |
+| |  group by: x                                                                     |
+| |                                                                                  |
+| 00:SCAN HDFS [benchm.d]                                                            |
+|    partitions=1/1 files=1 size=2.32GB                                              |
++------------------------------------------------------------------------------------+
+Fetched 23 row(s) in 0.02s
+
+
+[localhost:21000] > explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
+Query: explain select count(*) as cnt  from d inner join dm on d.x = dm.x
++------------------------------------------------------------------------------------+
+| Explain String                                                                     |
++------------------------------------------------------------------------------------+
+| Estimated Per-Host Requirements: Memory=3.88GB VCores=2                            |
+| WARNING: The following tables are missing relevant table and/or column statistics. |
+| benchm.d, benchm.dm                                                                |
+|                                                                                    |
+| 06:AGGREGATE [FINALIZE]                                                            |
+| |  output: count:merge(*)                                                          |
+| |                                                                                  |
+| 05:EXCHANGE [UNPARTITIONED]                                                        |
+| |                                                                                  |
+| 03:AGGREGATE                                                                       |
+| |  output: count(*)                                                                |
+| |                                                                                  |
+| 02:HASH JOIN [INNER JOIN, BROADCAST]                                               |
+| |  hash predicates: d.x = dm.x                                                     |
+| |                                                                                  |
+| |--04:EXCHANGE [BROADCAST]                                                         |
+| |  |                                                                               |
+| |  01:SCAN HDFS [benchm.dm]                                                        |
+| |     partitions=1/1 files=1 size=6.57MB                                           |
+| |                                                                                  |
+| 00:SCAN HDFS [benchm.d]                                                            |
+|    partitions=1/1 files=1 size=2.32GB                                              |
++------------------------------------------------------------------------------------+
+Fetched 22 row(s) in 0.01s
+
+
+
+
 
