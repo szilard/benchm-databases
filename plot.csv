@@ -8,3 +8,4 @@ db|MySQL InnoDB|100|200
 db|PostgreSQL|350|80
 an.db|Analytical DB-1|1|2
 an.db|Analytical DB-2|10|25
+hadoop|Impala|60|50

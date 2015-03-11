@@ -1,0 +1,37 @@
+
+
+
+sudo -u hive hive
+
+dfs -mkdir /tmp/benchm;
+dfs -mkdir /tmp/benchm/d;
+dfs -mkdir /tmp/benchm/dm;
+
+dfs -put /tmp/dm.csv /tmp/benchm/dm;
+dfs -put /tmp/d.csv /tmp/benchm/d;
+
+create database benchm;
+use benchm;
+
+create external table d (x int, y float) 
+row format delimited fields terminated by ',' lines terminated by '\n'
+stored as textfile location '/tmp/benchm/d';
+
+create external table dm (x int) 
+row format delimited fields terminated by ',' lines terminated by '\n'
+stored as textfile location '/tmp/benchm/dm';
+
+
+select x, avg(y) as ym 
+from d 
+group by x
+order by ym desc 
+limit 5;
+-- 
+
+select count(*) as cnt 
+from d
+inner join dm on d.x = dm.x;
+-- 
+
+

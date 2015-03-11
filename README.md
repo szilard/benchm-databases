@@ -128,6 +128,7 @@ a comprehensive SQL benchmark is out of the scope here.
 |  db      | PostgreSQL       |   120         |       350      |    80    |
 |  an.db   | Analytical DB-1  |   100         |       1        |    2     |
 |  an.db   | Analytical DB-2  |   150         |       10       |    25    |
+|  hadoop  | Impala           |   20          |       60       |    50    |
 
 ![plots](https://github.com/szilard/benchm-databases/blob/master/plot.png)
 

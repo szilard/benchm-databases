@@ -1,0 +1,18 @@
+
+
+impala-shell
+
+invalidate metadata;
+use benchm;
+
+
+select x, avg(y) as ym 
+from d 
+group by x
+order by ym desc 
+limit 5;
+
+select count(*) as cnt 
+from d
+inner join dm on d.x = dm.x;
+
