@@ -81,6 +81,7 @@ postgres=# explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
 
 ###### Impala
 
+
 [localhost:21000] > explain select x, avg(y) as ym  from d  group by x order by ym desc  limit 5;
 Query: explain select x, avg(y) as ym  from d  group by x order by ym desc  limit 5
 +------------------------------------------------------------------------------------+
