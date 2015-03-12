@@ -102,8 +102,8 @@ dataset structure, or the number nodes for the scale-out systems etc. (Perhaps t
 critique against the relevance of this benchmark would say why this specific dataset? Why not
 vary the size/structure?)
 
-I also specifically want to avoid (at least for now) looking at scaling by number of nodes for the 
-scale-out systems. I'm primarily concerned with efficiency on a single (or a small number of nodes).
+I'm also not looking in detail at the scaling by the number of nodes for the 
+big data systems as I'm primarily concerned with the efficiency on a single or a small number of nodes.
 
 In the tests the only computation running on the system is the target query, therefore I'm not
 studying the behavior in function of the load (e.g. the number of concurrent queries running on the system).
@@ -136,7 +136,7 @@ a comprehensive SQL benchmark is out of the scope here.
 
 | System    | Aggr 1-node | Aggr 5-node | Join 1-node | Join 5-node |
 | --------- | ----------- | ----------- | ----------- | ----------- |
-| Hive      |    250      |   160       |    80       |     55      |
+| Hive      |    250      |   160       |    80       |     50      |
 | Impala    |    25       |   16        |    15       |     10      |
 
 
