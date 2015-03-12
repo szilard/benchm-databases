@@ -25,8 +25,9 @@ R/Python operate in memory and can integrate the tabular operations
 with rich visualization, statistical modeling etc. On the other hand, they are limited to data sizes
 that fit in RAM, run single-threaded, and unlike the other systems do not have a query optimizer.
 
-MySQL/PostgreSQL have been designed for mixed OLTP/analytical workloads but any given query runs
-on one processor core only (though the database can use multiple cores to run different queries).
+MySQL/PostgreSQL have been designed for mixed OLTP/analytical workloads and while 
+the database can use multiple cores to run different queries, any given query runs
+on one processor core only.
 
 The analytical databases and the "big data" systems can scale-out to multiple nodes (and use all cores on them). 
 The analytical (MPP) databases have parallel/shared-nothing architecture, columnar storage, compression and are specifically
@@ -69,17 +70,17 @@ inner join dm on d.x = dm.x;
 
 #### Setup
 
-All tests have been performed on a 8-core box running Ubuntu 14.04 and 
-with plenty of RAM (64GB) for the tasks. All queries have been run 2 times and the second
-time was recorded (warm run). In this case various caching mechanisms come into play and data is
-already in RAM, therefore the disks (standard or SSD) do not play a role.
+The tests have been performed on a m3.2xlarge EC2 instance (8 cores, 30GB RAM) running Ubuntu 14.04. 
+The queries have been run 2 times and the second
+time was recorded (warm run). In this case various caching mechanisms come into play and the data is
+effectively in RAM.
 
 While I'm a great fan of reproducibility, in this benchmark I'm more interested in orders
 of magnitude and not strict precision and exact reproducibility. With some more work one can create install and test
-scripts and run them on a specific EC2 instance for complete reproducibility.
+scripts that can run in a fully automated fashion for complete reproducibility.
 
 The software tools have been installed using standard instructions with no tuning 
-(with a few exceptions as noted).
+(with a few exceptions as noted). For Hive/Impala Amazon's EMR was used to avoid a more ellaborate installation.
 
 The following running times have been measured:
 
@@ -119,17 +120,17 @@ a comprehensive SQL benchmark is out of the scope here.
 
 |  Type      | System           |  Load/Rea     |   Aggregation  |   Join   |
 | ---------- | ---------------- | ------------- | -------------- | -------- |
-|  Stats     | R data.table     |   30          |       20       |    15    |
-|  Stats     | R data.table key |   45          |       2        |    3     |
-|  Stats     | R dplyr          |   30          |       70       |    60    |
-|  Stats     | Python pandas    |   40          |       20       |    50    |
-|  DB        | MySQL MyISAM     |   50          |       70       |    600   |  
-|  DB        | MySQL InnoDB     |   1500        |       100      |    200   |
-|  DB        | PostgreSQL       |   120         |       350      |    80    |
-|  MPP       | Analytical DB-1  |   100         |       1        |    2     |
-|  MPP       | Analytical DB-2  |   150         |       10       |    25    |
-|  Big Data  | Hive             |   20          |       1000     |    160   |
-|  Big Data  | Impala           |   20          |       60       |    50    |
+|  Stats     | R data.table     |   30          |       5.5      |    6.5   |
+|  Stats     | R data.table key |   35          |       1.3      |    1.7   |
+|  Stats     | R dplyr          |   30          |       45       |    40    |
+|  Stats     | Python pandas    |   30          |       8        |    25    |
+|  DB        | MySQL MyISAM     |   40          |       45       |    470   |  
+|  DB        | MySQL InnoDB     |   430         |       70       |    140   |
+|  DB        | PostgreSQL       |   120         |       175      |    55    |
+|  MPP       | MPP-1            |   70          |       0.5      |    2.5   |
+|  MPP       | MPP-2            |   130         |       6.5      |    15    |
+|  Big Data  | Hive             |   20          |       250      |    80    |
+|  Big Data  | Impala           |   20          |       25       |    15    |
 
 ![plots](https://github.com/szilard/benchm-databases/blob/master/plot.png)
 
