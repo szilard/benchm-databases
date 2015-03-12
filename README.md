@@ -118,7 +118,7 @@ a comprehensive SQL benchmark is out of the scope here.
 
 (times in seconds)
 
-|  Type      | System           |  Load/Rea     |   Aggregation  |   Join   |
+|  Type      | System           |  Load/Read    |   Aggregation  |   Join   |
 | ---------- | ---------------- | ------------- | -------------- | -------- |
 |  Stats     | R data.table     |   30          |       5.5      |    6.5   |
 |  Stats     | R data.table key |   35          |       1.3      |    1.7   |
@@ -133,6 +133,12 @@ a comprehensive SQL benchmark is out of the scope here.
 |  Big Data  | Impala           |   20          |       25       |    15    |
 
 ![plots](https://github.com/szilard/benchm-databases/blob/master/plot.png)
+
+| System    | Aggr 1-node | Aggr 5-node | Join 1-node | Join 5-node |
+| --------- | ----------- | ----------- | ----------- | ----------- |
+| Hive      |    250      |   160       |    80       |     55      |
+| Impala    |    25       |   16        |    15       |     10      |
+
 
 #### Discussions
 
