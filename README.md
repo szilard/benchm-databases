@@ -120,15 +120,16 @@ a comprehensive SQL benchmark is out of the scope here.
 
 |  Type      | System           |  Load/Read    |   Aggregation  |   Join   |
 | ---------- | ---------------- | ------------- | -------------- | -------- |
-|  Stats     | R data.table     |   30          |       5.5      |    6.5   |
-|  Stats     | R data.table key |   35          |       1.3      |    1.7   |
+|  Stats     | R DT             |   30          |       5.5      |    6.5   |
+|  Stats     | R DT key         |   35          |       1.3      |    1.7   |
 |  Stats     | R dplyr          |   30          |       45       |    40    |
-|  Stats     | Python pandas    |   30          |       8        |    25    |
+|  Stats     | Py pandas        |   30          |       8        |    25    |
 |  DB        | MySQL MyISAM     |   40          |       45       |    470   |  
 |  DB        | MySQL InnoDB     |   430         |       70       |    140   |
 |  DB        | PostgreSQL       |   120         |       175      |    55    |
 |  MPP       | MPP-1            |   70          |       0.5      |    2.5   |
-|  MPP       | MPP-2            |   130         |       6.5      |    15    |
+|  MPP       | MPP-2            |               |       4.5      |    1.7   |
+|  MPP       | MPP-3            |   130         |       6.5      |    15    |
 |  Big Data  | Hive             |   20          |       250      |    80    |
 |  Big Data  | Impala           |   20          |       25       |    15    |
 
