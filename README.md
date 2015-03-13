@@ -100,9 +100,9 @@ of magnitude of running times for aggregations and joins on datasets of sizes of
 The results are expected to vary with hardware, tuning, and likely even more with dataset size, 
 dataset structure, or the number of nodes for the scale-out systems etc. Perhaps the strongest
 critique against the general relevance of this benchmark could be that it uses a certain
-data size and structure only instead of examining a variety of.
+data size and structure only, instead of examining a variety of.
 
-I'm not looking in detail at the scaling by the number of nodes for the 
+I'm not looking in detail either at the scaling by the number of nodes for the 
 big data systems as I'm primarily concerned with the efficiency on a single or a small number of nodes.
 
 In the tests the only computation running on the system is the target query, therefore I'm not
