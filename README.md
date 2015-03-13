@@ -97,10 +97,10 @@ optionally it can be transformed into a columnar format (such as parquet). Queri
 This is far from a comprehensive benchmark. It is my attempt to *quickly* get an idea of the order
 of magnitude of running times for aggregations and joins on datasets of sizes of interest to *me* at the moment. 
 
-The results are expected to vary with hardware, tuning, and even more with dataset size, 
-dataset structure, or the number nodes for the scale-out systems etc. (Perhaps the strongest
-critique against the relevance of this benchmark would say why this specific dataset? Why not
-vary the size/structure?)
+The results are expected to vary with hardware, tuning, and likely even more with dataset size, 
+dataset structure, or the number of nodes for the scale-out systems etc. Perhaps the strongest
+critique against the general relevance of this benchmark could be that it uses a certain
+data size and structure only instead of examining a variety of.
 
 I'm not looking in detail at the scaling by the number of nodes for the 
 big data systems as I'm primarily concerned with the efficiency on a single or a small number of nodes.
@@ -110,7 +110,7 @@ studying the behavior in function of the load (e.g. the number of concurrent que
 
 Finally, one might say that queries in practice are complex and the running times depend not only 
 on how fast are these primitives, but also on how the query optimizer can deal with complexity. Again,
-a comprehensive SQL benchmark is out of the scope here.
+a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 
 
 
