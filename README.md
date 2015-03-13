@@ -102,7 +102,7 @@ dataset structure, or the number nodes for the scale-out systems etc. (Perhaps t
 critique against the relevance of this benchmark would say why this specific dataset? Why not
 vary the size/structure?)
 
-I'm also not looking in detail at the scaling by the number of nodes for the 
+I'm not looking in detail at the scaling by the number of nodes for the 
 big data systems as I'm primarily concerned with the efficiency on a single or a small number of nodes.
 
 In the tests the only computation running on the system is the target query, therefore I'm not
@@ -128,7 +128,7 @@ a comprehensive SQL benchmark is out of the scope here.
 |  DB        | MySQL InnoDB     |   430         |       70       |    140   |
 |  DB        | PostgreSQL       |   120         |       175      |    55    |
 |  MPP       | MPP-1            |   70          |       0.5      |    2.5   |
-|  MPP       | MPP-2            |               |       4.5      |    1.7   |
+|  MPP       | MPP-2            |   200         |       9        |    4     |
 |  MPP       | MPP-3            |   130         |       6.5      |    15    |
 |  Big Data  | Hive             |   20          |       250      |    80    |
 |  Big Data  | Impala           |   20          |       25       |    15    |
