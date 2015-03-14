@@ -143,7 +143,7 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 
 #### Discussions
 
-It seems that for data manipulation with ~ 100 million rows / ~ 1 GB datasets MPP databases
+It seems that for data manipulation with ~100 million rows / ~1GB datasets MPP databases
 are the fastest, next statistical software, then traditional databases, and finally big data
 systems (see graph above).
 
