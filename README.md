@@ -178,7 +178,7 @@ While it is no surprize that Hive (which generates traditional Hadoop map-reduce
 the order of magnitude (100x vs analytical databases) is surprizing a bit.
 
 Spark is a new map-reduce like architecture that leverages in-memory computations, therefore significantly faster 
-than Hive, but stays slower than even Impala.
+than Hive (especially when data is first read/cached in memory), but stays slower for example than Impala.
 
 For ever larger datasets, statistical software will run out of memory, while traditional databases
 seem to become prohibitively slow. MPPs and big data systems can scale-out to multiple nodes, though 
