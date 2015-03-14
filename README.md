@@ -79,7 +79,9 @@ While I'm a great fan of reproducibility, in this benchmark I'm more interested 
 of magnitude and not strict precision and exact reproducibility. With some more work one can create install and test
 scripts that can run in a fully automated fashion for complete reproducibility.
 
-The software tools have been installed with the latest available [versions]() using standard instructions with no tuning 
+The software tools have been installed with the latest available 
+[versions](https://github.com/szilard/benchm-databases/blob/master/versions.txt)
+using standard instructions with no tuning 
 (with a few exceptions as noted). For Hive/Impala Amazon's EMR was used to avoid a more ellaborate installation.
 
 
