@@ -312,3 +312,59 @@ Time taken: 0.082 seconds, Fetched: 76 row(s)
 
 
 
+
+
+
+######### Spark SQL
+
+
+explain select x, avg(y) as ym  from d  group by x order by ym desc  limit 5;
+
+== Physical Plan ==
+TakeOrdered 5, [ym#23 DESC]
+ Aggregate false, [x#29], [x#29,(CAST(SUM(PartialSum#33), DoubleType) / CAST(SUM(PartialCount#34L), DoubleType)) AS ym#23]
+  Exchange (HashPartitioning [x#29], 200)
+   Aggregate true, [x#29], [x#29,COUNT(CAST(y#30, DoubleType)) AS PartialCount#34L,SUM(CAST(y#30, DoubleType)) AS PartialSum#33]
+    HiveTableScan [x#29,y#30], (MetastoreRelation benchm, d, None), None
+Time taken: 0.3 seconds
+
+
+-- cached:
+
+== Physical Plan ==
+TakeOrdered 5, [ym#105 DESC]
+ Aggregate false, [x#111], [x#111,(CAST(SUM(PartialSum#125), DoubleType) / CAST(SUM(PartialCount#126L), DoubleType)) AS ym#105]
+  Exchange (HashPartitioning [x#111], 200)
+   Aggregate true, [x#111], [x#111,COUNT(CAST(y#112, DoubleType)) AS PartialCount#126L,SUM(CAST(y#112, DoubleType)) AS PartialSum#125]
+    InMemoryColumnarTableScan [x#111,y#112], [], (InMemoryRelation [x#111,y#112], true, 10000, StorageLevel(true, true, false, true, 1), (HiveTableScan [x#57,y#58], (MetastoreRelation benchm, d, None), None), Some(d))
+
+
+
+
+explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
+
+== Physical Plan ==
+Aggregate false, [], [Coalesce(SUM(PartialCount#51L),0) AS cnt#41L]
+ Exchange SinglePartition
+  Aggregate true, [], [COUNT(1) AS PartialCount#51L]
+   Project []
+    ShuffledHashJoin [x#47], [x#49], BuildRight
+     Exchange (HashPartitioning [x#47], 200)
+      HiveTableScan [x#47], (MetastoreRelation benchm, d, None), None
+     Exchange (HashPartitioning [x#49], 200)
+      HiveTableScan [x#49], (MetastoreRelation benchm, dm, None), None
+Time taken: 0.426 seconds
+
+
+== Physical Plan ==
+Aggregate false, [], [Coalesce(SUM(PartialCount#158L),0) AS cnt#133L]
+ Exchange SinglePartition
+  Aggregate true, [], [COUNT(1) AS PartialCount#158L]
+   Project []
+    BroadcastHashJoin [x#139], [x#141], BuildRight
+     InMemoryColumnarTableScan [x#139], [], (InMemoryRelation [x#139,y#140], true, 10000, StorageLevel(true, true, false, true, 1), (HiveTableScan [x#57,y#58], (MetastoreRelation benchm, d, None), None), Some(d))
+     InMemoryColumnarTableScan [x#141], [], (InMemoryRelation [x#141], true, 10000, StorageLevel(true, true, false, true, 1), (HiveTableScan [x#87], (MetastoreRelation benchm, dm, None), None), Some(dm))
+Time taken: 0.225 seconds
+
+
+

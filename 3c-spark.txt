@@ -27,3 +27,5 @@ inner join dm on d.x = dm.x;
 
 
 
+cache table dm;
+cache table d;
