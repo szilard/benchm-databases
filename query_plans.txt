@@ -356,6 +356,8 @@ Aggregate false, [], [Coalesce(SUM(PartialCount#51L),0) AS cnt#41L]
 Time taken: 0.426 seconds
 
 
+-- cached:
+
 == Physical Plan ==
 Aggregate false, [], [Coalesce(SUM(PartialCount#158L),0) AS cnt#133L]
  Exchange SinglePartition
