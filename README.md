@@ -174,8 +174,11 @@ While traditional databases like MySQL/PostgreSQL aim to be reasonable for both 
 workloads, it comes as a surprize that even for 1GB sizes (which in today's terms is not large at all)
 they perform so poorly.
 
-Finally, it is no surprize that Hive (which generates traditional Hadoop map-reduce jobs) is the slowest, 
-though the order of magnitude (100x vs analytical databases) is surprizing a bit.
+While it is no surprize that Hive (which generates traditional Hadoop map-reduce jobs) is the slowest, 
+the order of magnitude (100x vs analytical databases) is surprizing a bit.
+
+Spark is a new map-reduce like architecture that leverages in-memory computations, therefore significantly faster 
+than Hive, but stays slower than even Impala.
 
 For ever larger datasets, statistical software will run out of memory, while traditional databases
 seem to become prohibitively slow. MPPs and big data systems can scale-out to multiple nodes, though 
