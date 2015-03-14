@@ -172,7 +172,8 @@ though the order of magnitude (100x vs analytical databases) is surprizing a bit
 For ever larger datasets, statistical software will run out of memory, while traditional databases
 seem to become prohibitively slow. MPPs and big data systems can scale-out to multiple nodes, though 
 the speed advantage of MPPs seems so large that it's hard to imagine anything but extreme data sizes
-when the big data systems can overcome the MPPs.
+when the big data systems can overcome the MPPs (though their respective scaling in function of the number 
+of nodes has to be studied).
 
 
 
