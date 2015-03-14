@@ -169,4 +169,10 @@ they perform so poorly.
 Finally, it is no surprize that Hive (which generates traditional Hadoop map-reduce jobs) is the slowest, 
 though the order of magnitude (100x vs analytical databases) is surprizing a bit.
 
+For ever larger datasets, statistical software will run out of memory, while traditional databases
+seem to become prohibitively slow. MPPs and big data systems can scale-out to multiple nodes, though 
+the speed advantage of MPPs seems so large that it's hard to imagine anything but extreme data sizes
+when the big data systems can overcome the MPPs.
+
+
 
