@@ -16,7 +16,7 @@ The tools analysed are:
 1. Statistical software: R (dplyr, data.table) and Python (pandas)
 2. Databases (MySQL, PostgreSQL)
 3. Analytical databases (3 MPP/columnar stores)
-4. Big data systems (Hive, Impala, Spark)
+4. "Big data" systems (Hive, Impala, Spark)
 
 All but the analytical databases are open source. The analytical databases have free (community) editions
 or unexpensive cloud offerings. 
@@ -153,7 +153,8 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 
 It seems that for data manipulation with ~100 million rows / ~1GB datasets MPP databases
 are the fastest, next statistical software, then traditional databases, and finally big data
-systems (see graph above).
+systems (see graph above). Some more insights can be gained from 
+[query plans](https://github.com/szilard/benchm-databases/blob/master/query_plans.txt).
 
 The largest surprize (to me) is that traditional databases (MySQL/PostgreSQL) perform so poorly
 at this size. 
