@@ -82,7 +82,7 @@ scripts that can run in a fully automated fashion for complete reproducibility.
 The software tools have been installed with the latest available 
 [versions](https://github.com/szilard/benchm-databases/blob/master/versions.txt)
 using standard instructions with no tuning 
-(with a few exceptions as noted). For Hive/Impala Amazon's EMR was used to avoid a more ellaborate installation.
+(with a few exceptions as noted). For Hive/Impala/Spark Amazon's EMR was used to avoid a more ellaborate installation.
 
 
 The following running times have been measured:
@@ -90,8 +90,9 @@ The following running times have been measured:
 1. For R/Python data has been read from csv file and then aggregates/joins happen in memory.
 2. For MySQL/Postgres and the analytical databases, the data has to be loaded first into the database, and only then 
 can one run queries.
-3. For the Hadoop-based systems the data has to be copied into HDFS (much faster than loading it to a database); 
-optionally it can be transformed into a columnar format (such as parquet). Queries can run readily.
+3. For the "Big Data" systems the data has to be copied into HDFS (much faster than loading it to a database); 
+optionally it can be transformed into a columnar format (such as parquet). Queries can run readily. For Spark the data
+can be either read from HDFS on the fly or loaded into memory (cached) and then queried.
 
 
 
