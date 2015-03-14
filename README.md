@@ -143,8 +143,8 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 
 #### Discussions
 
-It seems that for data manipulation with ~100-million rows / ~1GB datasets MPP databases
-are the fastest, next statistical software, then traditional databases and finally big data
+It seems that for data manipulation with ~ 100 million rows / ~ 1 GB datasets MPP databases
+are the fastest, next statistical software, then traditional databases, and finally big data
 systems (see graph above).
 
 The largest surprize (to me) is that traditional databases (MySQL/PostgreSQL) perform so poorly
@@ -155,8 +155,8 @@ the features that come with it (efficient binary storage format, compression) al
 ability to process a query on multiple processor cores are ideal for the task.
 
 Statistical software fairs pretty well. While not able to use multiple cores and no query planning,
-the data is in RAM in a format that makes processing fast. (For the primitives studied query
-planning does not play an important role such as for complex queries built using these primitives.)
+the data is in RAM in a format that makes this type of processing fast. (For the primitives studied, query
+planning does not play an important role such as for complex queries.)
 
 As an MPP-like tool but with data stored in Hadoop, Impala achieves higher performance than traditional
 Hadoop tools, but it is significantly slower than the full MPPs that can marshall their data as they 
