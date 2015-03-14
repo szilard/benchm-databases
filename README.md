@@ -143,7 +143,30 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 
 #### Discussions
 
+It seems that for data manipulation with ~100-million rows / ~1GB datasets MPP databases
+are the fastest, next statistical software, then traditional databases and finally big data
+systems (see graph above).
 
+The largest surprize (to me) is that traditional databases (MySQL/PostgreSQL) perform so poorly
+at this size. 
 
+Naturally, analytical databases are the fastest. Even on 1 node, their columnar architecture and
+the features that come with it (efficient binary storage format, compression) along with the 
+ability to process a query on multiple processor cores are ideal for the task.
+
+Statistical software fairs pretty well. While not able to use multiple cores and no query planning,
+the data is in RAM in a format that makes processing fast. (For the primitives studied query
+planning does not play an important role such as for complex queries built using these primitives.)
+
+As an MPP-like tool but with data stored in Hadoop, Impala achieves higher performance than traditional
+Hadoop tools, but it is significantly slower than the full MPPs that can marshall their data as they 
+please. 
+
+While traditional databases like MySQL/PostgreSQL aim to be reasonable for both OLTP and analytical 
+workloads, it comes as a surprize that even for 1GB sizes (which in today's terms is not large at all)
+they perform so poorly.
+
+Finally, it is no surprize that Hive (which generates traditional Hadoop map-reduce jobs) is the slowest, 
+though the order of magnitude (100x vs analytical databases) is surprizing a bit.
 
 
