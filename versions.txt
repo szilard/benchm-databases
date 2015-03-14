@@ -1,0 +1,22 @@
+
+R 3.1.2
+data.table 1.9.4
+dplyr 0.4.1
+
+Python 2.7.8 
+  Anaconda 2.1.0 
+  Ipython 2.2.0
+pandas 0.14.1
+
+
+MySQL 5.5.41
+
+PostgreSQL 9.3.6 
+
+
+Amazon (AWS) EMR 3.5.0
+~
+Hive 0.13.1 
+Impala 1.2.4
+Spark 1.2.1
+

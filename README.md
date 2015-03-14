@@ -70,17 +70,18 @@ inner join dm on d.x = dm.x;
 
 #### Setup
 
-The tests have been performed on a m3.2xlarge EC2 instance (8 cores, 30GB RAM) running Ubuntu 14.04. 
+The tests have been performed on a m3.2xlarge EC2 instance (8 cores, 30GB RAM) running Ubuntu 14.04.
 The queries have been run 2 times and the second
 time was recorded (warm run). In this case various caching mechanisms come into play and the data is
-effectively in RAM.
+effectively in RAM. 
 
 While I'm a great fan of reproducibility, in this benchmark I'm more interested in orders
 of magnitude and not strict precision and exact reproducibility. With some more work one can create install and test
 scripts that can run in a fully automated fashion for complete reproducibility.
 
-The software tools have been installed using standard instructions with no tuning 
+The software tools have been installed with the latest available [versions]() using standard instructions with no tuning 
 (with a few exceptions as noted). For Hive/Impala Amazon's EMR was used to avoid a more ellaborate installation.
+
 
 The following running times have been measured:
 
@@ -132,13 +133,17 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 |  MPP       | MPP-3            |   130         |       6.5      |    15    |
 |  Big Data  | Hive             |   20          |       250      |    80    |
 |  Big Data  | Impala           |   20          |       25       |    15    |
+|  Big Data  | Spark            |   20          |       120      |    130   |
+|  Big Data  | Spark cached     |   50          |       90       |    17    |
 
 ![plots](https://github.com/szilard/benchm-databases/blob/master/plot.png)
 
-| System    | Aggr 1-node | Aggr 5-node | Join 1-node | Join 5-node |
-| --------- | ----------- | ----------- | ----------- | ----------- |
-| Hive      |    250      |   160       |    80       |     50      |
-| Impala    |    25       |   16        |    15       |     10      |
+| System        | Aggr 1-node | Aggr 5-node | Join 1-node | Join 5-node |
+| ------------- | ----------- | ----------- | ----------- | ----------- |
+| Hive          |    250      |   160       |    80       |     50      |
+| Impala        |    25       |   16        |    15       |     10      |
+| Spark         |    120      |   50        |    130      |     30      |
+| Spark cached  |    90       |   40        |    17       |     10      |
 
 
 #### Discussions
