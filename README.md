@@ -124,7 +124,7 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 
 |  Type      | System           |  Load/Read    |   Aggregation  |   Join   |
 | ---------- | ---------------- | ------------- | -------------- | -------- |
-|  Stats     | R DT             |   30          |       5.5      |    6.5   |
+|  Stats     | [R DT](blob/master/1a-R-datatable.txt)             |   30          |       5.5      |    6.5   |
 |  Stats     | R DT key         |   35          |       1.3      |    1.7   |
 |  Stats     | R dplyr          |   30          |       45       |    40    |
 |  Stats     | Py pandas        |   30          |       8        |    25    |
