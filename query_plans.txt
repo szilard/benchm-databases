@@ -9,7 +9,6 @@ mysql> explain extended select x, avg(y) as ym  from d  group by x order by ym d
 +----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
 |  1 | SIMPLE      | d     | ALL  | NULL          | NULL | NULL    | NULL | 100000000 |   100.00 | Using temporary; Using filesort |
 +----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
-1 row in set, 1 warning (0.00 sec)
 
 
 mysql>  explain extended select count(*) as cnt  from d inner join dm on d.x = dm.x;
@@ -33,7 +32,6 @@ mysql> explain extended select x, avg(y) as ym  from d  group by x order by ym d
 +----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
 |  1 | SIMPLE      | d     | ALL  | NULL          | NULL | NULL    | NULL | 100000319 |   100.00 | Using temporary; Using filesort |
 +----+-------------+-------+------+---------------+------+---------+------+-----------+----------+---------------------------------+
-1 row in set, 1 warning (0.01 sec)
 
 
 mysql> explain extended select count(*) as cnt  from d inner join dm on d.x = dm.x;
@@ -43,7 +41,6 @@ mysql> explain extended select count(*) as cnt  from d inner join dm on d.x = dm
 |  1 | SIMPLE      | d     | ALL  | NULL          | NULL | NULL    | NULL       | 100000319 |   100.00 |                          |
 |  1 | SIMPLE      | dm    | ref  | ixm           | ixm  | 5       | benchm.d.x |         1 |   100.00 | Using where; Using index |
 +----+-------------+-------+------+---------------+------+---------+------------+-----------+----------+--------------------------+
-2 rows in set, 1 warning (0.00 sec)
 
 
 
@@ -61,7 +58,6 @@ postgres=# explain select x, avg(y) as ym  from d  group by x order by ym desc  
                ->  Sort  (cost=23372848.55..23622844.93 rows=99998552 width=12)
                      Sort Key: x
                      ->  Seq Scan on d  (cost=0.00..1540526.52 rows=99998552 width=12)
-(7 rows)
 
 
 postgres=# explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
@@ -73,7 +69,6 @@ postgres=# explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
          ->  Seq Scan on d  (cost=0.00..1540526.52 rows=99998552 width=4)
          ->  Hash  (cost=14425.00..14425.00 rows=1000000 width=4)
                ->  Seq Scan on dm  (cost=0.00..14425.00 rows=1000000 width=4)
-(6 rows)
 
 
 
@@ -111,7 +106,6 @@ Query: explain select x, avg(y) as ym  from d  group by x order by ym desc  limi
 | 00:SCAN HDFS [benchm.d]                                                            |
 |    partitions=1/1 files=1 size=2.32GB                                              |
 +------------------------------------------------------------------------------------+
-Fetched 23 row(s) in 0.02s
 
 
 [localhost:21000] > explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
@@ -142,7 +136,6 @@ Query: explain select count(*) as cnt  from d inner join dm on d.x = dm.x
 | 00:SCAN HDFS [benchm.d]                                                            |
 |    partitions=1/1 files=1 size=2.32GB                                              |
 +------------------------------------------------------------------------------------+
-Fetched 22 row(s) in 0.01s
 
 
 
@@ -226,7 +219,6 @@ STAGE PLANS:
     Fetch Operator
       limit: 5
 
-Time taken: 0.059 seconds, Fetched: 73 row(s)
 
 
 hive> explain select count(*) as cnt  from d inner join dm on d.x = dm.x;
@@ -307,7 +299,6 @@ STAGE PLANS:
     Fetch Operator
       limit: -1
 
-Time taken: 0.082 seconds, Fetched: 76 row(s)
 
 
 
@@ -326,7 +317,6 @@ TakeOrdered 5, [ym#23 DESC]
   Exchange (HashPartitioning [x#29], 200)
    Aggregate true, [x#29], [x#29,COUNT(CAST(y#30, DoubleType)) AS PartialCount#34L,SUM(CAST(y#30, DoubleType)) AS PartialSum#33]
     HiveTableScan [x#29,y#30], (MetastoreRelation benchm, d, None), None
-Time taken: 0.3 seconds
 
 
 -- cached:
@@ -353,7 +343,6 @@ Aggregate false, [], [Coalesce(SUM(PartialCount#51L),0) AS cnt#41L]
       HiveTableScan [x#47], (MetastoreRelation benchm, d, None), None
      Exchange (HashPartitioning [x#49], 200)
       HiveTableScan [x#49], (MetastoreRelation benchm, dm, None), None
-Time taken: 0.426 seconds
 
 
 -- cached:
@@ -366,7 +355,6 @@ Aggregate false, [], [Coalesce(SUM(PartialCount#158L),0) AS cnt#133L]
     BroadcastHashJoin [x#139], [x#141], BuildRight
      InMemoryColumnarTableScan [x#139], [], (InMemoryRelation [x#139,y#140], true, 10000, StorageLevel(true, true, false, true, 1), (HiveTableScan [x#57,y#58], (MetastoreRelation benchm, d, None), None), Some(d))
      InMemoryColumnarTableScan [x#141], [], (InMemoryRelation [x#141], true, 10000, StorageLevel(true, true, false, true, 1), (HiveTableScan [x#87], (MetastoreRelation benchm, dm, None), None), Some(dm))
-Time taken: 0.225 seconds
 
 
 
