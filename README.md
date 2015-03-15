@@ -122,22 +122,22 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 
 (times in seconds)
 
-|  Type      | System           |  Load/Read    |   Aggregation  |   Join   |
-| ---------- | ---------------- | ------------- | -------------- | -------- |
-|  Stats     | [R DT](1a-R-datatable.txt)             |   30          |       5.5      |    6.5   |
-|  Stats     | R DT key         |   35          |       1.3      |    1.7   |
-|  Stats     | R dplyr          |   30          |       45       |    40    |
-|  Stats     | Py pandas        |   30          |       8        |    25    |
-|  DB        | MySQL MyISAM     |   40          |       45       |    470   |  
-|  DB        | MySQL InnoDB     |   430         |       70       |    140   |
-|  DB        | PostgreSQL       |   120         |       175      |    55    |
-|  MPP       | MPP-1            |   70          |       0.5      |    2.5   |
-|  MPP       | MPP-2            |   130         |       9        |    4     |
-|  MPP       | MPP-3            |   130         |       6.5      |    15    |
-|  Big Data  | Hive             |   20          |       250      |    80    |
-|  Big Data  | Impala           |   20          |       25       |    15    |
-|  Big Data  | Spark            |   20          |       120      |    130   |
-|  Big Data  | Spark cached     |   50          |       90       |    17    |
+|  Type      | System                              |  Load/Read    |   Aggregation  |   Join   |
+| ---------- | ----------------------------------- | ------------- | -------------- | -------- |
+|  Stats     | [R DT](1a-R-datatable.txt)          |   30          |       5.5      |    6.5   |
+|  Stats     | [R DT key](1a-R-datatable.txt)      |   35          |       1.3      |    1.7   |
+|  Stats     | [R dplyr](1b-R-dplyr.txt)           |   30          |       45       |    40    |
+|  Stats     | [Py pandas](1c-python-pandas.txt)   |   30          |       8        |    25    |
+|  DB        | [MySQL MyISAM](2a-mysql.txt)        |   40          |       45       |    470   |  
+|  DB        | [MySQL InnoDB](2a-mysql.txt)        |   430         |       70       |    140   |
+|  DB        | [PostgreSQL](2b-postgres.txt)       |   120         |       175      |    55    |
+|  MPP       | MPP-1                               |   70          |       0.5      |    2.5   |
+|  MPP       | MPP-2                               |   130         |       9        |    4     |
+|  MPP       | MPP-3                               |   130         |       6.5      |    15    |
+|  Big Data  | [Hive](3a-hive.txt)                 |   20          |       250      |    80    |
+|  Big Data  | [Impala](3b-impala.txt)             |   20          |       25       |    15    |
+|  Big Data  | [Spark](3c-spark.txt)               |   20          |       120      |    130   |
+|  Big Data  | [Spark cached](3c-spark.txt)        |   50          |       90       |    17    |
 
 ![plots](plot.png)
 
