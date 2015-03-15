@@ -40,7 +40,7 @@ architecture). Impala uses MPP-like technology to query data in HDFS (Hadoop's d
 
 #### Data
 
-The data is [randomly generated](https://github.com/szilard/benchm-databases/blob/master/0-gendata.txt): 
+The data is [randomly generated](0-gendata.txt): 
 one table `d` (`x` integer, `y` float) of 100 million rows for aggregation
 (`x` takes 1 million distinct values) and another table `dm` (`x` integer) of 1 million rows for the join only.
 (The larger table `d` is of ~2GB size in the CSV format and results in ~1GB usage when loaded in database or
@@ -80,7 +80,7 @@ of magnitude and not strict precision and exact reproducibility. With some more 
 scripts that can run in a fully automated fashion for complete reproducibility.
 
 The software tools have been installed with the latest available 
-[versions](https://github.com/szilard/benchm-databases/blob/master/versions.txt)
+[versions](versions.txt)
 using standard instructions with no tuning 
 (with a few exceptions as noted). For Hive/Impala/Spark Amazon's EMR was used to avoid a more ellaborate installation.
 
@@ -139,7 +139,7 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 |  Big Data  | Spark            |   20          |       120      |    130   |
 |  Big Data  | Spark cached     |   50          |       90       |    17    |
 
-![plots](https://github.com/szilard/benchm-databases/blob/master/plot.png)
+![plots](plot.png)
 
 | System        | Aggr 1-node | Aggr 5-node | Join 1-node | Join 5-node |
 | ------------- | ----------- | ----------- | ----------- | ----------- |
@@ -154,7 +154,7 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 It seems that for data manipulation with ~100 million rows / ~1GB datasets MPP databases
 are the fastest, next statistical software, then traditional databases, and finally big data
 systems (see graph above). Some more insights can be gained from 
-[query plans](https://github.com/szilard/benchm-databases/blob/master/query_plans.txt).
+[query plans](query_plans.txt).
 
 The largest surprize (to me) is that traditional databases (MySQL/PostgreSQL) perform so poorly
 at this size. 
