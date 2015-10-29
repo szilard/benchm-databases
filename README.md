@@ -163,7 +163,7 @@ Naturally, analytical databases are the fastest. Even on 1 node, their columnar 
 the features that come with it (efficient binary storage format, compression) along with the 
 ability to process a query on multiple processor cores are ideal for the task.
 
-Statistical software fairs pretty well. While not able to use multiple cores and no query planning,
+Statistical software fares pretty well. While not able to use multiple cores and no query planning,
 the data is in RAM in a format that makes this type of processing fast. (For the primitives studied, query
 planning does not play an important role such as for complex queries.)
 
