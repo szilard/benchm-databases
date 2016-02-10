@@ -1,0 +1,28 @@
+# install.packages(c("MonetDB.R", "MonetDBLite"), repos=c("http://dev.monetdb.org/Assets/R/", "http://cran.rstudio.com/"))
+
+library(MonetDB.R)
+
+con <- dbConnect(MonetDBLite())
+dbSendQuery(con, "create table d(x int, y double)")
+dbSendQuery(con, "create table dm(x int)")
+
+dbSendQuery(con, "copy into d from '/tmp/d.csv' using delimiters ','")
+dbSendQuery(con, "copy into dm from '/tmp/dm.csv' using delimiters ','")
+
+system.time(dbGetQuery(con, "
+	select x, avg(y) as ym 
+	from d 
+	group by x
+	order by ym desc 
+	limit 5;
+"))
+
+# 7s on my box
+
+system.time(dbGetQuery(con, "
+	select count(*) as cnt 
+	from d
+	inner join dm on d.x = dm.x;
+"))
+
+# 1.7s on my box
