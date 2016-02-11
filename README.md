@@ -158,6 +158,7 @@ would look like
 | Spark cached  |    90       |   40        |    17       |     10      |
 
 *Update: With newer [versions](versions.txt) of Hive and Spark:
+
 |  System        |   Aggr  |   Join   |
 |----------------|---------|----------|
 | Hive           |  250    |    100   |
