@@ -20,13 +20,13 @@ Hive 0.13.1
 Impala 1.2.4
 Spark 1.2.1
 
-
 ====================
 
 Update:
 
 Amazon (AWS) EMR 4.3.0
 ~
-Hive 1.0.0.
+Hive 1.0.0
 Spark 1.6
+(Impala not available in EMR anymore)
 
