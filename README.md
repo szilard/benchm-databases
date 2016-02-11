@@ -166,6 +166,8 @@ would look like
 | Spark          |   40    |     30   |
 | Spark cached   |   12    |     15   |
 
+*Updated chart:* [here](plot-updated.png)
+
 
 #### Discussions
 
