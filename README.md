@@ -21,8 +21,8 @@ The tools analysed are:
 All but the analytical databases are open source. The analytical databases have free (community) editions
 or unexpensive cloud offerings. 
 
-*Update: @hannesmuehleisen submitted results for MonetDB, an analytical/columnar db that unlike all the
-above is open source.*
+**Update:** @hannesmuehleisen submitted results for MonetDB, an analytical/columnar db that unlike all the
+above is open source.
 
 R/Python operate in memory and can integrate the tabular operations
 with rich visualization, statistical modeling etc. On the other hand, they are limited to data sizes
@@ -143,10 +143,10 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 |  Big Data  | [Spark cached](3c-spark.txt)        |   50          |       90       |    17    |
 
 
-*Update: [Timings](https://gist.github.com/szilard/7d810877fcc6b019a478#gistcomment-1693662) 
-by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5. 
+**Update:** [Timings](https://gist.github.com/szilard/7d810877fcc6b019a478#gistcomment-1693662) 
+by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5.
 
-*Update: With newer [versions](versions.txt) of Hive and Spark:*
+**Update:** With newer [versions](versions.txt) of Hive and Spark:
 
 |  System        |   Aggr  |   Join   |
 |----------------|---------|----------|
