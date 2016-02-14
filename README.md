@@ -142,21 +142,9 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 |  Big Data  | [Spark](3c-spark.txt)               |   20          |       120      |    130   |
 |  Big Data  | [Spark cached](3c-spark.txt)        |   50          |       90       |    17    |
 
-![plots](plot.png)
 
 *Update: [Timings](https://gist.github.com/szilard/7d810877fcc6b019a478#gistcomment-1693662) 
-by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5. The above plot
-would look like 
-[this](https://cloud.githubusercontent.com/assets/227792/12945315/f9d07788-cfec-11e5-9339-fc13d08105e2.png).*
-
-
-| System        | Aggr 1-node | Aggr 5-node | Join 1-node | Join 5-node |
-| ------------- | ----------- | ----------- | ----------- | ----------- |
-| Hive          |    250      |   160       |    80       |     50      |
-| Impala        |    25       |   16        |    15       |     10      |
-| Spark         |    120      |   50        |    130      |     30      |
-| Spark cached  |    90       |   40        |    17       |     10      |
-
+by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5. 
 
 *Update: With newer [versions](versions.txt) of Hive and Spark:*
 
@@ -166,7 +154,16 @@ would look like
 | Spark          |   40    |     30   |
 | Spark cached   |   12    |     15   |
 
-*Updated chart:* [here](plot-updated.png)
+![plots](plot.png)
+
+Multinode results (with older versions of Spark/Hive):
+
+| System        | Aggr 1-node | Aggr 5-node | Join 1-node | Join 5-node |
+| ------------- | ----------- | ----------- | ----------- | ----------- |
+| Hive          |    250      |   160       |    80       |     50      |
+| Impala        |    25       |   16        |    15       |     10      |
+| Spark         |    120      |   50        |    130      |     30      |
+| Spark cached  |    90       |   40        |    17       |     10      |
 
 
 #### Discussions
