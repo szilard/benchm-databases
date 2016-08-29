@@ -9,7 +9,8 @@
 |  MPP       | MPP-1            |   70          |       0.5      |    2.5   |
 |  MPP       | MPP-2            |   130         |       9        |    4     |
 |  MPP       | MPP-3            |   130         |       6.5      |    15    |
-|  MPP       | MonetDB          |   70          |       7        |    1.5
+|  MPP       | MPP-4            |   102         |       7.1      |    8.5   |
+|  MPP       | MonetDB          |   70          |       7        |    1.5   |
 |  Big Data  | Hive             |   20          |       250      |    80    |
 |  Big Data  | Impala           |   20          |       25       |    15    |
 |  Big Data  | Spark            |   20          |       40       |    30    |
