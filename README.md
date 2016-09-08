@@ -24,6 +24,8 @@ or unexpensive cloud offerings.
 **Update:** @hannesmuehleisen submitted results for MonetDB, an analytical/columnar db that unlike all the
 above is open source.
 
+**Update:** @JazzFan submitted results for another analytical db ("MPP-4" here) 
+
 R/Python operate in memory and can integrate the tabular operations
 with rich visualization, statistical modeling etc. On the other hand, they are limited to data sizes
 that fit in RAM, run single-threaded, and unlike the other systems do not have a query optimizer.
@@ -137,6 +139,7 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 |  MPP       | MPP-1                               |   70          |       0.5      |    2.5   |
 |  MPP       | MPP-2                               |   130         |       9        |    4     |
 |  MPP       | MPP-3                               |   130         |       6.5      |    15    |
+|  MPP       | MPP-4                               |   102         |       7.1      |    8.5   |
 |  Big Data  | [Hive](3a-hive.txt)                 |   20          |       250      |    80    |
 |  Big Data  | [Impala](3b-impala.txt)             |   20          |       25       |    15    |
 |  Big Data  | [Spark](3c-spark.txt)               |   20          |       120      |    130   |
