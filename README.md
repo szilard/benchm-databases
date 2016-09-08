@@ -151,8 +151,8 @@ by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5.
 |  System        |   Aggr  |   Join   |
 |----------------|---------|----------|
 | Hive           |  250    |    100   |
-| Spark          |   40    |     30   |
-| Spark cached   |   12    |     15   |
+| Spark          |   40    |     25   |
+| Spark cached   |   12    |     2.5  |
 
 ![plots](plot.png)
 

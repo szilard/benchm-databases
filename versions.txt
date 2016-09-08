@@ -30,3 +30,13 @@ Hive 1.0.0
 Spark 1.6
 (Impala not available in EMR anymore)
 
+
+====================
+
+Update:
+
+emr-5.0.0
+~
+Spark 2.0.0
+
+
