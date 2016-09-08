@@ -157,6 +157,8 @@ by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5.
 | Spark          |   40    |     25   |
 | Spark cached   |   12    |     2.5  |
 
+(also one should use parquet rather rather than csv for un-cached Spark).
+
 ![plots](plot.png)
 
 Multinode results (with older versions of Spark/Hive):
