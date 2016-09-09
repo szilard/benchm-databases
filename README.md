@@ -140,6 +140,7 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 |  MPP       | MPP-2                               |   130         |       9        |    4     |
 |  MPP       | MPP-3                               |   130         |       6.5      |    15    |
 |  MPP       | MPP-4                               |   102         |       7.1      |    8.5   |
+|  MPP       | MonetDB                             |   70          |       7        |    1.5   |
 |  Big Data  | [Hive](3a-hive.txt)                 |   20          |       250      |    80    |
 |  Big Data  | [Impala](3b-impala.txt)             |   20          |       25       |    15    |
 |  Big Data  | [Spark](3c-spark.txt)               |   20          |       120      |    130   |
@@ -201,7 +202,8 @@ While it is no surprize that Hive (which generates traditional Hadoop map-reduce
 the order of magnitude (100x vs analytical databases) is surprizing a bit.
 
 Spark is a new map-reduce like architecture that leverages in-memory computations, therefore significantly faster 
-than Hive (especially when data is first read/cached in memory), but stays slower for example than Impala.
+than Hive (especially when data is first read/cached in memory), but initially slower for example than Impala,
+though further optimizations (codenamed Tungsten in Spark 1.5, 1.6 and 2.0) obtained significant improvements.
 
 For ever larger datasets, statistical software will run out of memory, while traditional databases
 seem to become prohibitively slow. MPPs and big data systems can scale-out to multiple nodes, though 
