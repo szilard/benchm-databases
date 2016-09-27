@@ -19,7 +19,7 @@ The tools analysed are:
 4. "Big data" systems (Hive, Impala, Spark)
 
 All but the analytical databases are open source. The analytical databases have free (community) editions
-or unexpensive cloud offerings. 
+or inexpensive cloud offerings. 
 
 **Update:** @hannesmuehleisen submitted results for MonetDB, an analytical/columnar db that unlike all the
 above is open source.
@@ -87,7 +87,7 @@ scripts that can run in a fully automated fashion for complete reproducibility.
 The software tools have been installed with the latest available 
 [versions](versions.txt)
 using standard instructions with no tuning 
-(with a few exceptions as noted). For Hive/Impala/Spark Amazon's EMR was used to avoid a more ellaborate installation.
+(with a few exceptions as noted). For Hive/Impala/Spark Amazon's EMR was used to avoid a more elaborate installation.
 
 
 The following running times have been measured:
@@ -158,7 +158,7 @@ by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5.
 | Spark          |   40    |     25   |
 | Spark cached   |   12    |     2.5  |
 
-(also one should use parquet rather rather than csv for un-cached Spark).
+(also one should use parquet rather than csv for un-cached Spark).
 
 ![plots](plot.png)
 
@@ -179,7 +179,7 @@ are the fastest, next statistical software, then traditional databases, and fina
 systems (see graph above). Some more insights can be gained from 
 [query plans](query_plans.txt).
 
-The largest surprize (to me) is that traditional databases (MySQL/PostgreSQL) perform so poorly
+The largest surprise (to me) is that traditional databases (MySQL/PostgreSQL) perform so poorly
 at this size. 
 
 Naturally, analytical databases are the fastest. Even on 1 node, their columnar architecture and
@@ -191,14 +191,14 @@ the data is in RAM in a format that makes this type of processing fast. (For the
 planning does not play an important role such as for complex queries.)
 
 As an MPP-like tool but with data stored in Hadoop, Impala achieves higher performance than traditional
-Hadoop tools, but it is significantly slower than the full MPPs that can marshall their data as they 
+Hadoop tools, but it is significantly slower than the full MPPs that can marshal their data as they 
 please. 
 
 While traditional databases like MySQL/PostgreSQL aim to be reasonable for both OLTP and analytical 
 workloads, it comes as a surprize that even for 1GB sizes (which in today's terms is not large at all)
 they perform so poorly.
 
-While it is no surprize that Hive (which generates traditional Hadoop map-reduce jobs) is the slowest, 
+While it is no surprise that Hive (which generates traditional Hadoop map-reduce jobs) is the slowest, 
 the order of magnitude (100x vs analytical databases) is surprizing a bit.
 
 Spark is a new map-reduce like architecture that leverages in-memory computations, therefore significantly faster 
