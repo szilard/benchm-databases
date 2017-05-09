@@ -17,6 +17,7 @@ The tools analysed are:
 2. Databases (MySQL, PostgreSQL)
 3. Analytical databases (3 MPP/columnar stores)
 4. "Big data" systems (Hive, Impala, Spark)
+**Update:** MapD open sourced their analytical database using GPUs, which should be a new class here.
 
 All but the analytical databases are open source. The analytical databases have free (community) editions
 or inexpensive cloud offerings. 
@@ -145,6 +146,7 @@ a comprehensive SQL benchmark is out of the scope here (but see e.g. TPC-DS).
 |  Big Data  | [Impala](3b-impala.txt)             |   20          |       25       |    15    |
 |  Big Data  | [Spark](3c-spark.txt)               |   20          |       120      |    130   |
 |  Big Data  | [Spark cached](3c-spark.txt)        |   50          |       90       |    17    |
+|  GPU       | [MapD](4-mapd.txt)                  |   12          |       0.5      |    0.07  |
 
 
 **Update:** [Timings](https://gist.github.com/szilard/7d810877fcc6b019a478#gistcomment-1693662) 
@@ -159,6 +161,9 @@ by @hannesmuehleisen on MonetDB on same m3.2xlarge: aggregation 7.0, join 1.5.
 | Spark cached   |   12    |     2.5  |
 
 (also one should use parquet rather than csv for un-cached Spark).
+
+**Update:** MapD [timings](https://community.mapd.com/t/toy-benchmark-on-aws-cloud-gpu-usage/34/3) by @dwayneberry
+on laptop with GPU (1060) show impressive 0.5sec for aggregation and 70ms (!!) for the join.
 
 ![plots](plot.png)
 
