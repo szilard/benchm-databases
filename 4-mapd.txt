@@ -1,0 +1,57 @@
+
+
+AWS Marketplace:
+https://aws.amazon.com/marketplace/pp/B071H71L2Y
+
+EC2 Launch p2.xlarge 
+
+
+ssh -i XXX centos@ec2-XXX
+
+
+sudo yum install screen htop R
+
+
+R
+
+set.seed(123)
+n <- 100e6
+m <- 1e6
+d <- data.frame(x = sample(m, n, replace=TRUE), y = runif(n))
+dm <- data.frame(x = sample(m))
+write.table(d, file = "/tmp/d.csv", row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(dm, file = "/tmp/dm.csv", row.names = FALSE, col.names = FALSE, sep = ",")
+
+
+
+[as root:]   ./cloud-init/per-once-bootstrap-mapd.sh
+
+
+/raidStorage/installs/mapd-ce-3.0.0-20170507-7626e30-Linux-x86_64-render/bin/mapdql -p XXX
+
+
+\timing
+
+create table d(x int, y float);
+create table dm(x int);
+
+copy dm from '/tmp/dm.csv' with (header = 'false');
+copy d from '/tmp/d.csv'  with (header = 'false');
+--Loaded: 100000000 recs, Rejected: 0 recs in 52.022000 secs
+
+
+select x, avg(y) as ym 
+from d 
+group by x
+order by ym desc 
+limit 5;
+-- Execution time: 1342 ms, Total time: 1343 ms
+-- Execution time: 1131 ms, Total time: 1132 ms
+
+select count(*) as cnt 
+from d
+inner join dm on d.x = dm.x;
+-- Execution time: 199 ms, Total time: 199 ms
+-- Execution time: 83 ms, Total time: 83 ms
+
+
