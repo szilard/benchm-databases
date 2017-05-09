@@ -17,6 +17,7 @@ The tools analysed are:
 2. Databases (MySQL, PostgreSQL)
 3. Analytical databases (3 MPP/columnar stores)
 4. "Big data" systems (Hive, Impala, Spark)
+
 **Update:** MapD open sourced their analytical database using GPUs, which should be a new class here.
 
 All but the analytical databases are open source. The analytical databases have free (community) editions
