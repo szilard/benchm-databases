@@ -15,5 +15,7 @@
 |  Big Data  | Impala           |   20          |       25       |    15    |
 |  Big Data  | Spark            |   20          |       40       |    30    |
 |  Big Data  | Spark-cached     |   50          |       12       |    2.5   |
+|  GPU       | MapD             |   12          |       0.5      |    0.1   |
 ## Spark Join 15->13 to avoid overlap in plot
+## MapD join 0.07->0.1 to fit in scale
 
