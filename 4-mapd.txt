@@ -55,3 +55,37 @@ inner join dm on d.x = dm.x;
 -- Execution time: 83 ms, Total time: 83 ms
 
 
+
+
+
+
+======================
+
+On the above MapD is using CPU on the aggregation query and GPU only on the join.
+
+
+According to MapD's @dwayneberry:
+
+I ran your steps on my laptop (1 x 1060 GPU) and these are the times I got.
+I have checked the code on a kepler machine (k80machine like you are running on AWS) and I notice the IR code is targeting the CPU for the AVG(float) query. My laptop is pascal so didn't see the CPU behaviour.
+We have recently changed this so more operations will run on Float on kepler architecture. I will get that applied to this edition as soon as possible.
+
+https://community.mapd.com/t/toy-benchmark-on-aws-cloud-gpu-usage/34/3
+
+
+@dwayneberry's timing:
+
+mapdql> select x, avg(y) as ym from d group by x order by ym desc limit 5;
+Execution time: 464 ms, Total time: 465 ms
+Execution time: 467 ms, Total time: 467 ms
+
+mapdql> select count(*) as cnt 
+..> from d
+..> inner join dm on d.x = dm.x;
+
+Execution time: 141 ms, Total time: 142 ms
+Execution time: 67 ms, Total time: 67 ms
+Execution time: 69 ms, Total time: 69 ms
+
+
+
